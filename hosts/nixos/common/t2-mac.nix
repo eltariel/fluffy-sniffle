@@ -8,11 +8,20 @@
 		(pkgs.stdenvNoCC.mkDerivation {
 			name = "brcm-firmware";
 
-			buildCommand = ''
-				dir="$out/lib/firmware"
-				mkdir -p "$dir"
-				cp -r ${../../../firmware}/* "$dir"
-			'';
+			archive = builtins.fetchTree {
+				type = "file";
+				url = "file:///boot/firmware.tar.gz";
+			};
+			dontUnpack = true;
+
+			# buildCommand = ''
+			# 	dir="$out/lib/firmware"
+			# 	mkdir -p "$dir"
+			# 	cp -r ${../../../firmware}/* "$dir"
+			# '';
+			builder = ./t2-mac-extract-firmware.sh;
+
+			nativeBuildInputs = with pkgs; [ python3 ];
 		})
 	];
 
