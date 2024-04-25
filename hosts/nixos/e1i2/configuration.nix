@@ -1,14 +1,15 @@
-{ config, lib, pkgs, nixos-hardware, ... }:
+{ nixos-hardware, ... }:
 {
   imports =
     [
       ./hardware-configuration.nix
-      ../common/system.nix
-      ../common/services.nix
-      ../common/gnome.nix
-      ../common/default-users.nix
-      ../common/t2-mac.nix
       nixos-hardware.nixosModules.apple-t2
+
+      ../../../modules/nixos/system.nix
+      ../../../modules/nixos/services.nix
+      ../../../modules/nixos/gnome.nix
+      ../../../modules/nixos/default-users.nix
+      ../../../modules/nixos/t2-mac.nix
     ];
 
   networking.hostName = "e1i2";
