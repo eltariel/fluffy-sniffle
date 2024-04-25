@@ -1,8 +1,13 @@
 { pkgs, inputs, lib, ... }:
 {
-  # imports = [
-    # inputs.nixos-hardware.nixosModules.apple-t2
-  # ];
+	services.logind = {
+		extraConfig = "IdleAction=lock";
+
+		lidSwitch = "lock";
+		lidSwitchExternalPower = "lock";
+
+		powerKey = "lock";
+	};
 
 	hardware.firmware = [
 		(pkgs.stdenvNoCC.mkDerivation {
