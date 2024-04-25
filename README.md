@@ -1,0 +1,2 @@
+# fluffy-sniffle
+Nix configs
