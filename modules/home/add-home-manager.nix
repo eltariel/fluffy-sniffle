@@ -1,8 +1,7 @@
-{ pkgs, system, ... }@args: usernames:
+pkgs: usernames:
 let
   inherit (builtins) listToAttrs map;
   inherit (pkgs.stdenv) isDarwin;
-#  inherit (args) system;
 
   homeDir = user:
     # nixos sets the home directory for us
@@ -28,7 +27,6 @@ in [{
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = args;
     users = homesFor usernames;
   };
 }]

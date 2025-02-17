@@ -16,25 +16,31 @@
 
     nixosHost = system:
     let
-      specialArgs = {
-        inherit inputs nixpkgs nixos-hardware home-manager system;
-        pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+	config.allowUnfree = true;
       };
-
-      hm = import ./modules/home/add-home-manager.nix specialArgs;
+      
+      homeManager = import ./modules/home/add-home-manager.nix;
     in
     host: users:
     {
       "${host}" = nixpkgs.lib.nixosSystem {
-        inherit system specialArgs;
+        inherit system;
+        
+	specialArgs = {
+          inherit inputs nixpkgs nixos-hardware home-manager system;
+        };
+
         modules = [
           ./hosts/nixos/${host}/configuration.nix
           home-manager.nixosModules.home-manager
-        ] ++ (hm users);
+        ] ++ (homeManager pkgs users);
       };
     };
   in {
     nixosConfigurations =
+      nixosHost x86_64-linux "flattery" ["ellie"] //
       nixosHost x86_64-linux "e1i2" ["ellie"] //
       nixosHost x86_64-linux "e1i2" ["ellie"];
   };

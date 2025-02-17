@@ -4,6 +4,11 @@
     shellAliases = {
       man = "batman";
     };
+
+    packages = with pkgs; [
+      nerd-fonts.victor-mono
+    ];
+
   };
 
   programs = {
@@ -38,6 +43,19 @@
       };
     };
 
+    alacritty = {
+      enable = true;
+      settings = {
+        font = {
+	  normal = {
+	    family = "VictorMono Nerd Font";
+	    style = "Regular";
+	  };
+	  size = 14;
+	};
+      };
+    };
+
     bat = {
       config.theme = "Nord";
       extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batpipe batwatch ];
@@ -45,7 +63,7 @@
 
     eza = {
       git = true;
-      icons = true;
+      icons = "auto";
       # extraConfig = [""];
     };
   };

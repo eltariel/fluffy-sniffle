@@ -4,10 +4,8 @@
     [
       ./hardware-configuration.nix
 
-      ../../../modules/nixos/system.nix
-      ../../../modules/nixos/services.nix
-      ../../../modules/nixos/gnome.nix
-      ../../../modules/nixos/default-users.nix
+      ../../../modules/nixos
+      ../../../modules/nixos/ui/gnome.nix
     ];
 
   networking.hostName = "snarf";
