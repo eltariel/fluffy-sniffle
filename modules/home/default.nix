@@ -9,6 +9,9 @@
       nerd-fonts.victor-mono
     ];
 
+    shell = {
+      enableShellIntegration = true;
+    };
   };
 
   programs = {
@@ -65,6 +68,10 @@
       git = true;
       icons = "auto";
       # extraConfig = [""];
+    };
+    
+    nix-index = {
+      enable = true;
     };
   };
 
