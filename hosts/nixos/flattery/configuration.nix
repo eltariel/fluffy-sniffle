@@ -1,25 +1,25 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, nixos-hardware, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      nixos-hardware.nixosModules.lenovo-thinkpad-x1-yoga
-      nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
-      nixos-hardware.nixosModules.common-cpu-intel
-      nixos-hardware.nixosModules.common-pc-laptop-ssd
+  config,
+  pkgs,
+  nixos-hardware,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    nixos-hardware.nixosModules.lenovo-thinkpad-x1-yoga
+    nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
+    nixos-hardware.nixosModules.common-cpu-intel
+    nixos-hardware.nixosModules.common-pc-laptop-ssd
 
+    ../../../modules/nixos
+    ../../../modules/nixos/ui/gnome.nix
+    ../../../modules/nixos/ui/steam.nix
+  ];
 
-      ../../../modules/nixos
-      ../../../modules/nixos/ui/gnome.nix
-      ../../../modules/nixos/ui/steam.nix
-    ];
-
-  
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
 

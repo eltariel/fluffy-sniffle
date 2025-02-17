@@ -1,5 +1,9 @@
-{ inputs, config, pkgs, ... }:
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../modules/home
     ../modules/home/git.nix
@@ -15,8 +19,8 @@
     #     pkgs.fd
     #   ];
     #
-    file = { };
+    file = {};
   };
 
-  programs = { };
+  programs = {};
 }

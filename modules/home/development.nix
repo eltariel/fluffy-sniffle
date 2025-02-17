@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{config, ...}: {
   programs = {
     jq.enable = true;
     pyenv.enable = true;

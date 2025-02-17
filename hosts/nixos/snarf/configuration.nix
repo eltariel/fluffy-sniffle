@@ -1,12 +1,10 @@
-{ config, ... }:
-{
-  imports =
-    [
-      ./hardware-configuration.nix
+{config, ...}: {
+  imports = [
+    ./hardware-configuration.nix
 
-      ../../../modules/nixos
-      ../../../modules/nixos/ui/gnome.nix
-    ];
+    ../../../modules/nixos
+    ../../../modules/nixos/ui/gnome.nix
+  ];
 
   networking.hostName = "snarf";
   networking.networkmanager.enable = true;
@@ -18,7 +16,7 @@
     driSupport32Bit = true;
   };
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -46,4 +44,3 @@
 
   system.stateVersion = "24.05";
 }
-

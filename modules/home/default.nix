@@ -1,5 +1,9 @@
-{ inputs, config, pkgs, ... }:
 {
+  inputs,
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     shellAliases = {
       man = "batman";
@@ -50,18 +54,18 @@
       enable = true;
       settings = {
         font = {
-	  normal = {
-	    family = "VictorMono Nerd Font";
-	    style = "Regular";
-	  };
-	  size = 14;
-	};
+          normal = {
+            family = "VictorMono Nerd Font";
+            style = "Regular";
+          };
+          size = 14;
+        };
       };
     };
 
     bat = {
       config.theme = "Nord";
-      extraPackages = with pkgs.bat-extras; [ batdiff batman batgrep batpipe batwatch ];
+      extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batpipe batwatch];
     };
 
     eza = {
@@ -69,7 +73,7 @@
       icons = "auto";
       # extraConfig = [""];
     };
-    
+
     nix-index = {
       enable = true;
     };

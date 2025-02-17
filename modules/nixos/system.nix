@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   time.timeZone = "Australia/Sydney";
 
   i18n.defaultLocale = "en_AU.UTF-8";
@@ -24,19 +23,19 @@
     neovim
     wget
     git
-		zsh
+    zsh
   ];
 
-	programs.zsh.enable = true;
-	users.defaultUserShell = pkgs.zsh;
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-	nix.settings.experimental-features = [ "nix-command" "flakes" ];
-	nixpkgs.config = {
-	  allowUnfree = true;
-	  allowUnfreePredicate = (pkg: true);
-	};
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowUnfreePredicate = pkg: true;
+  };
 }
