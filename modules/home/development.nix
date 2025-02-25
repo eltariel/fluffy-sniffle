@@ -1,6 +1,11 @@
 {config, pkgs, ...}: {
   home.packages = with pkgs; [
     gh
+    cmake
+    gnumake
+    gcc-arm-embedded
+    clang
+    python313
   ];
 
   programs = {
