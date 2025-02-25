@@ -52,15 +52,15 @@
 
     alacritty = {
       enable = true;
-      settings = {
-        font = {
-          normal = {
-            family = "VictorMono Nerd Font";
-            style = "Regular";
-          };
-          size = 14;
-        };
-      };
+#      settings = {
+#        font = {
+#          normal = {
+#            family = "VictorMono Nerd Font";
+#            style = "Regular";
+#          };
+#          size = 14;
+#        };
+#      };
     };
 
     bat = {
