@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  lib,
   nixos-hardware,
   ...
 }: {
@@ -17,8 +18,12 @@
 
     ../../../modules/nixos
     ../../../modules/nixos/ui/gnome.nix
+    ../../../modules/nixos/ui/plasma.nix
     ../../../modules/nixos/ui/steam.nix
   ];
+
+  services.xserver.displayManager.gdm.enable = lib.mkForce false;
+  programs.ssh.askPassword = lib.mkForce "";
 
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -43,6 +48,8 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  hardware.bluetooth.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
