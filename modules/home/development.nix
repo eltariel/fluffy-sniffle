@@ -6,6 +6,7 @@
     gcc-arm-embedded
     clang
     python313
+    ripgrep
   ];
 
   programs = {
