@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../modules/home
+    ./common
     ../modules/home/git.nix
     ../modules/home/editor.nix
     ../modules/home/development.nix
