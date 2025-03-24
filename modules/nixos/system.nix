@@ -33,6 +33,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
+  nix.settings.trusted-users = [ "@wheel" "nixremote" ];
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config = {
     allowUnfree = true;
