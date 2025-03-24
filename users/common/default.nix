@@ -10,7 +10,6 @@
     };
 
     packages = with pkgs; [
-      nerd-fonts.victor-mono
     ];
 
     shell = {
@@ -48,19 +47,6 @@
         ];
         theme = "agnoster";
       };
-    };
-
-    alacritty = {
-      enable = true;
-      #      settings = {
-      #        font = {
-      #          normal = {
-      #            family = "VictorMono Nerd Font";
-      #            style = "Regular";
-      #          };
-      #          size = 14;
-      #        };
-      #      };
     };
 
     bat = {
