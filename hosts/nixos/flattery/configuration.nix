@@ -25,6 +25,9 @@
   services.xserver.displayManager.gdm.enable = lib.mkForce false;
   programs.ssh.askPassword = lib.mkForce "";
 
+  # Enable binfmt emulation (for remote builders)
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
+
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
 
