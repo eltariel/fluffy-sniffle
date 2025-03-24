@@ -17,15 +17,19 @@
     home-manager,
     ...
   } @ inputs: let
+    inherit (builtins) listToAttrs map;
     x86_64-linux = "x86_64-linux";
-
-    nixosHost = system: let
-      pkgs = import nixpkgs {
+    aarch64-linux = "aarch64-linux";
+    allSystems = [x86_64-linux aarch64-linux];
+    pkgsForSystem = system:
+      import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
 
-      homeManager = import ./modules/home/add-home-manager.nix;
+    nixosHost = system: let
+      pkgs = pkgsForSystem system;
+      homeManager = (import ./modules/home/add-home-manager.nix) pkgs home-manager;
     in
       host: users: {
         "${host}" = nixpkgs.lib.nixosSystem {
@@ -35,20 +39,27 @@
             inherit inputs nixpkgs nixos-hardware home-manager system;
           };
 
-          modules =
-            [
-              ./hosts/nixos/${host}/configuration.nix
-              home-manager.nixosModules.home-manager
-            ]
-            ++ (homeManager pkgs users);
+          modules = [
+            ./hosts/nixos/${host}/configuration.nix
+            home-manager.nixosModules.home-manager
+            (homeManager.nixos users)
+          ];
         };
       };
+    nixLinux = system: let
+      pkgs = pkgsForSystem system;
+      homeManager = (import ./modules/home/add-home-manager.nix) pkgs home-manager;
+    in
+      host: users: homeManager.standalone host users;
   in {
-    formatter.${x86_64-linux} = nixpkgs.legacyPackages.${x86_64-linux}.alejandra; # todo: enable for all systems
+    formatter = nixpkgs.lib.genAttrs allSystems (s: nixpkgs.legacyPackages.${s}.alejandra);
+    #    formatter.${x86_64-linux} = nixpkgs.legacyPackages.${x86_64-linux}.alejandra; # todo: enable for all systems
 
     nixosConfigurations =
       nixosHost x86_64-linux "flattery" ["ellie"]
-      // nixosHost x86_64-linux "e1i2" ["ellie"]
+      // nixosHost x86_64-linux "e1i1" ["ellie"]
       // nixosHost x86_64-linux "e1i2" ["ellie"];
+
+    homeConfigurations = nixLinux aarch64-linux "pb2-2" ["ellie"];
   };
 }

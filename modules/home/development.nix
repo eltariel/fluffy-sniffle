@@ -1,4 +1,9 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     gh
     cmake
@@ -14,7 +19,7 @@
     pyenv.enable = true;
 
     vscode = {
-      enable = true;
+      enable = lib.mkDefault false; # services.xserver.enable;
     };
 
     pyenv = {
