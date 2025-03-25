@@ -20,6 +20,7 @@
     ../../../modules/nixos/ui/gnome.nix
     ../../../modules/nixos/ui/plasma.nix
     ../../../modules/nixos/ui/steam.nix
+    ../../../modules/nixos/build-host.nix
   ];
 
   services.xserver.displayManager.gdm.enable = lib.mkForce false;
