@@ -10,7 +10,7 @@ in {
         home.username = u;
 
         imports = [
-          ../../users/common
+          ../../users/common/ui
           ../../users/${u}.nix
         ];
       });
@@ -23,7 +23,7 @@ in {
           inherit pkgs;
           modules = [
             ../../hosts/nix-linux/${host}
-            ../../users/common/ui
+            ../../users/common
             ../../users/${u}.nix
             {
               home.username = u;
