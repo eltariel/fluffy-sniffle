@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../common
     ./system.nix
     ./default-users.nix
     ./services.nix
@@ -10,6 +11,6 @@
     automatic = true;
     dates = "weekly";
     options = "--delete-older-than 1w";
-  }
+  };
   nix.settings.auto-optimise-store = true;
 }
