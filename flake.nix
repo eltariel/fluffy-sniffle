@@ -57,6 +57,7 @@
 
     nixosConfigurations =
       nixosHost x86_64-linux "flattery" ["ellie"]
+      // nixosHost x86_64-linux "surf" ["ellie"]
       // nixosHost x86_64-linux "e1i1" ["ellie"]
       // nixosHost x86_64-linux "e1i2" ["ellie"];
 
