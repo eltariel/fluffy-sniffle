@@ -12,6 +12,7 @@
     clang
     python313
     ripgrep
+    git-lfs
   ];
 
   programs = {
