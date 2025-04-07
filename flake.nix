@@ -61,6 +61,8 @@
       // nixosHost x86_64-linux "e1i1" ["ellie"]
       // nixosHost x86_64-linux "e1i2" ["ellie"];
 
-    homeConfigurations = nixLinux aarch64-linux "pb2-2" ["ellie"];
+    homeConfigurations = 
+      nixLinux aarch64-linux "pb2-2" ["ellie"]
+      // nixLinux x86_64-linux "work-client-wsl" ["ellie"];
   };
 }
