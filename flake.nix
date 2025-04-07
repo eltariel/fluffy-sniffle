@@ -17,29 +17,21 @@
     home-manager,
     ...
   } @ inputs: let
-    inherit (builtins) listToAttrs map;
-    inherit (nixpkgs.lib) genAttrs concatMapAttrs;
+    inherit (nixpkgs.lib) genAttrs;
 
     x86_64-linux = "x86_64-linux";
     aarch64-linux = "aarch64-linux";
     aarch64-darwin = "aarch64-darwin";
     allSystems = [x86_64-linux aarch64-linux];
 
-    pkgsForSystem = system:
-      import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-
-    systemPkgs = genAttrs
-      allSystems
-      (system:
+    systemPkgs = genAttrs allSystems (
+      system:
         import nixpkgs {
           inherit system;
           config.allowUnfree = true;
         }
-      );
-    
+    );
+
     defaultUsers = ["ellie"];
     hosts = {
       nixos = {
@@ -58,37 +50,19 @@
       };
     };
 
-    nixosHost = system: let
-      homeManager = (import ./modules/home/add-home-manager.nix) systemPkgs.${system} home-manager;
-    in
-      host: users: {
-        "${host}" = nixpkgs.lib.nixosSystem {
-          inherit system;
-
-          specialArgs = {
-            inherit inputs nixpkgs nixos-hardware home-manager system;
-          };
-
-          modules = [
-            ./hosts/nixos/${host}/configuration.nix
-            home-manager.nixosModules.home-manager
-            (homeManager.nixos users)
-          ];
-        };
-      };
-    nixosFor = hostMap: concatMapAttrs (h: s: nixosHost s "${h}" defaultUsers) hostMap;
+    hostBuilder = import ./modules/home inputs;
 
     nixLinux = system: let
-      pkgs = pkgsForSystem system;
+      pkgs = systemPkgs.${system};
       homeManager = (import ./modules/home/add-home-manager.nix) pkgs home-manager;
     in
       host: users: homeManager.standalone host users;
   in {
     formatter = genAttrs allSystems (s: nixpkgs.legacyPackages.${s}.alejandra);
 
-    nixosConfigurations = nixosFor hosts.nixos;
+    nixosConfigurations = hostBuilder.nixosFor hosts.nixos defaultUsers;
 
-    homeConfigurations = 
+    homeConfigurations =
       nixLinux aarch64-linux "pb2-2" ["ellie"]
       // nixLinux x86_64-linux "work-client-wsl" ["ellie"];
   };
