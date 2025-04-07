@@ -15,12 +15,14 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
+    flake-utils,
     ...
   } @ inputs: let
     inherit (builtins) listToAttrs map;
     x86_64-linux = "x86_64-linux";
     aarch64-linux = "aarch64-linux";
     allSystems = [x86_64-linux aarch64-linux];
+
     pkgsForSystem = system:
       import nixpkgs {
         inherit system;
@@ -53,10 +55,10 @@
       host: users: homeManager.standalone host users;
   in {
     formatter = nixpkgs.lib.genAttrs allSystems (s: nixpkgs.legacyPackages.${s}.alejandra);
-    #    formatter.${x86_64-linux} = nixpkgs.legacyPackages.${x86_64-linux}.alejandra; # todo: enable for all systems
 
     nixosConfigurations =
-      nixosHost x86_64-linux "flattery" ["ellie"]
+      nixosHost x86_64-linux "snarf" ["ellie"]
+      // nixosHost x86_64-linux "flattery" ["ellie"]
       // nixosHost x86_64-linux "surf" ["ellie"]
       // nixosHost x86_64-linux "e1i1" ["ellie"]
       // nixosHost x86_64-linux "e1i2" ["ellie"];

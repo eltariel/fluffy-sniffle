@@ -13,4 +13,7 @@
     ];
   };
   nix.settings.trusted-users = ["nixremote"];
+
+  # Enable binfmt emulation
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 }

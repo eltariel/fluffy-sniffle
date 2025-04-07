@@ -9,25 +9,15 @@
   ...
 }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     nixos-hardware.nixosModules.lenovo-thinkpad-x1-yoga
     nixos-hardware.nixosModules.common-gpu-intel-kaby-lake
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc-laptop-ssd
 
-    ../../../modules/nixos
-    ../../../modules/nixos/ui/gnome.nix
-    ../../../modules/nixos/ui/plasma.nix
-    ../../../modules/nixos/ui/steam.nix
+    ../../../modules/nixos/ui
     ../../../modules/nixos/build-host.nix
   ];
-
-  services.xserver.displayManager.gdm.enable = lib.mkForce false;
-  programs.ssh.askPassword = lib.mkForce "";
-
-  # Enable binfmt emulation (for remote builders)
-  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
