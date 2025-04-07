@@ -1,13 +1,23 @@
-{lib, ...}: {
-  imports = [
-    ../.
-    ./common.nix
-    ./plasma.nix
-    ./gnome.nix
+{pkgs, ...}: {
+  services = {
+    xserver.enable = true;
 
-    ./steam.nix
+    flatpak = {
+      enable = true;
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    # config = { ... };
+  };
+
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  environment.systemPackages = with pkgs; [
+    firefox
   ];
-
-  services.xserver.displayManager.gdm.enable = lib.mkForce false;
-  programs.ssh.askPassword = lib.mkForce "";
 }

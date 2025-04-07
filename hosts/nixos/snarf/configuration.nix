@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
 
     ../../../modules/nixos
-    ../../../modules/nixos/ui/gnome.nix
+    ../../../modules/nixos/ui/combined
   ];
 
   networking.hostName = "snarf";
@@ -12,8 +12,6 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
   };
 
   services.xserver.videoDrivers = ["nvidia"];
@@ -40,7 +38,6 @@
       defaultNetwork.settings.dns_enabled = true;
     };
   };
-  users.users.ellie.extraGroups = ["docker"];
 
   system.stateVersion = "24.05";
 }

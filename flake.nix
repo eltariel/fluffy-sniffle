@@ -15,12 +15,14 @@
     nixpkgs,
     nixos-hardware,
     home-manager,
-    flake-utils,
     ...
   } @ inputs: let
     inherit (builtins) listToAttrs map;
+    inherit (nixpkgs.lib) genAttrs concatMapAttrs;
+
     x86_64-linux = "x86_64-linux";
     aarch64-linux = "aarch64-linux";
+    aarch64-darwin = "aarch64-darwin";
     allSystems = [x86_64-linux aarch64-linux];
 
     pkgsForSystem = system:
@@ -29,9 +31,35 @@
         config.allowUnfree = true;
       };
 
+    systemPkgs = genAttrs
+      allSystems
+      (system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+      );
+    
+    defaultUsers = ["ellie"];
+    hosts = {
+      nixos = {
+        snarf = x86_64-linux;
+        flattery = x86_64-linux;
+        surf = x86_64-linux;
+        e1i1 = x86_64-linux;
+        e1i2 = x86_64-linux;
+      };
+      darwin = {
+        e1m1 = aarch64-darwin;
+      };
+      homeManager = {
+        pb2-2 = aarch64-linux;
+        work-client-wsl = x86_64-linux;
+      };
+    };
+
     nixosHost = system: let
-      pkgs = pkgsForSystem system;
-      homeManager = (import ./modules/home/add-home-manager.nix) pkgs home-manager;
+      homeManager = (import ./modules/home/add-home-manager.nix) systemPkgs.${system} home-manager;
     in
       host: users: {
         "${host}" = nixpkgs.lib.nixosSystem {
@@ -48,20 +76,17 @@
           ];
         };
       };
+    nixosFor = hostMap: concatMapAttrs (h: s: nixosHost s "${h}" defaultUsers) hostMap;
+
     nixLinux = system: let
       pkgs = pkgsForSystem system;
       homeManager = (import ./modules/home/add-home-manager.nix) pkgs home-manager;
     in
       host: users: homeManager.standalone host users;
   in {
-    formatter = nixpkgs.lib.genAttrs allSystems (s: nixpkgs.legacyPackages.${s}.alejandra);
+    formatter = genAttrs allSystems (s: nixpkgs.legacyPackages.${s}.alejandra);
 
-    nixosConfigurations =
-      nixosHost x86_64-linux "snarf" ["ellie"]
-      // nixosHost x86_64-linux "flattery" ["ellie"]
-      // nixosHost x86_64-linux "surf" ["ellie"]
-      // nixosHost x86_64-linux "e1i1" ["ellie"]
-      // nixosHost x86_64-linux "e1i2" ["ellie"];
+    nixosConfigurations = nixosFor hosts.nixos;
 
     homeConfigurations = 
       nixLinux aarch64-linux "pb2-2" ["ellie"]

@@ -14,9 +14,7 @@
     nixos-hardware.nixosModules.microsoft-surface-pro-intel
 
     ../../../modules/nixos
-    ../../../modules/nixos/ui/gnome.nix
-    ../../../modules/nixos/ui/plasma.nix
-    ../../../modules/nixos/ui/steam.nix
+    ../../../modules/nixos/ui/combined
     ../../../modules/nixos/build-host.nix
   ];
 

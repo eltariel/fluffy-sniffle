@@ -15,7 +15,8 @@
     nixos-hardware.nixosModules.common-cpu-intel
     nixos-hardware.nixosModules.common-pc-laptop-ssd
 
-    ../../../modules/nixos/ui
+    ../../../modules/nixos
+    ../../../modules/nixos/ui/combined
     ../../../modules/nixos/build-host.nix
   ];
 

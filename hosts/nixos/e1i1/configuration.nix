@@ -5,7 +5,7 @@
 
     ../../../modules/nixos
     ../../../modules/nixos/ui/gnome.nix
-    ../../../modules/nixos/t2-mac.nix
+    # ../../../modules/nixos/t2-mac
   ];
 
   networking.hostName = "e1i1";

@@ -22,7 +22,7 @@ in {
         value = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ../../hosts/nix-linux/${host}
+            ../../hosts/home-manager/${host}
             ../../users/common
             ../../users/${u}.nix
             {
