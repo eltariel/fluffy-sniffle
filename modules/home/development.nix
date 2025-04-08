@@ -13,6 +13,13 @@
     python313
     ripgrep
     git-lfs
+
+    rustup
+
+    nodejs
+    corepack
+
+    dotnet-sdk
   ];
 
   programs = {
