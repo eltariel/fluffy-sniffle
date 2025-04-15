@@ -27,7 +27,7 @@
     pyenv.enable = true;
 
     vscode = {
-      enable = lib.mkDefault false; # services.xserver.enable;
+      enable = lib.mkDefault true; # services.xserver.enable;
     };
 
     pyenv = {
