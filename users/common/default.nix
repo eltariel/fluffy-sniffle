@@ -21,7 +21,7 @@
     # enable programs
     home-manager.enable = true;
     zsh.enable = true;
-    thefuck.enable = true;
+    pay-respects.enable = true;
     fzf.enable = true;
     bat.enable = true;
     direnv.enable = true;
@@ -41,7 +41,6 @@
         enable = true;
         plugins = [
           "git"
-          "thefuck"
           #  "fzf"
           #  "zoxide"
         ];
