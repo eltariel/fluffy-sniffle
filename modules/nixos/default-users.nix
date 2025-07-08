@@ -10,4 +10,9 @@
       # tree
     ];
   };
+
+  services.udev.packages = [
+    pkgs.platformio
+    pkgs.openocd
+  ];
 }
