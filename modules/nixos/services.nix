@@ -15,4 +15,6 @@
     enable = true;
   };
   programs.virt-manager.enable = true;
+
+  networking.wireguard.enable = true;
 }

@@ -20,6 +20,7 @@
     corepack
 
     dotnet-sdk
+    tio
   ];
 
   programs = {
