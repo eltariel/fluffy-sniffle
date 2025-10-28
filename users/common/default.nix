@@ -50,7 +50,13 @@
 
     bat = {
       config.theme = "Nord";
-      extraPackages = with pkgs.bat-extras; [batdiff batman batgrep batpipe batwatch];
+      extraPackages = with pkgs.bat-extras; [
+        batdiff
+        batman
+        # batgrep
+        batpipe
+        batwatch
+      ];
     };
 
     eza = {

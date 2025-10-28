@@ -20,6 +20,8 @@
     ../../../modules/nixos/build-host.nix
   ];
 
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
 
