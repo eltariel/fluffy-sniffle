@@ -17,6 +17,19 @@
     binfmt = true;
   };
 
+  programs = {
+    thunderbird = {
+      enable = true;
+      
+    };
+  };
+  
+  services = {
+    protonmail-bridge = {
+      enable = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     firefox
   ];
