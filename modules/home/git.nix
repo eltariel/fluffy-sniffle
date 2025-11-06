@@ -7,12 +7,21 @@
   programs = {
     git = {
       enable = true;
-      userEmail = "ellie@eltariel.com";
-      userName = "Ellie T";
+      settings = {
+        user = {
+          email = "ellie@eltariel.com";
+          name = "Ellie T";
+        };
+      };
       delta = {
         enable = true;
         # options = "";
       };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
     };
   };
 }
