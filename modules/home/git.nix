@@ -13,10 +13,6 @@
           name = "Ellie T";
         };
       };
-      delta = {
-        enable = true;
-        # options = "";
-      };
     };
 
     delta = {
