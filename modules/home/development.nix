@@ -17,7 +17,6 @@
     rustup
 
     nodejs
-    corepack
 
     dotnet-sdk
     tio
