@@ -11,7 +11,7 @@
       nerd-fonts.victor-mono
 
       inkscape
-#      gimp
+      #      gimp
     ];
   };
 

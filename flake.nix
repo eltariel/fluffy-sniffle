@@ -73,7 +73,7 @@
         pkgs = systemPkgs."x86_64-darwin";
         modules = [
           ./hosts/darwin/e1i2
-		  ./modules/darwin/ui
+          ./modules/darwin/ui
 
           home-manager.darwinModules.home-manager
           {

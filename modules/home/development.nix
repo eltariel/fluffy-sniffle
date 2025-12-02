@@ -8,7 +8,7 @@
     gh
     cmake
     gnumake
-#    gcc-arm-embedded # doesn't work on x86_64-darwin
+    #    gcc-arm-embedded # doesn't work on x86_64-darwin
     clang
     python313
     ripgrep
