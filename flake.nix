@@ -12,6 +12,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-06cb-009a-fingerprint-sensor = {
+      url = "github:elvetemedve/nixos-06cb-009a-fingerprint-sensor?ref=make-compatible-with-nixos-unstable-and-upgrade";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
