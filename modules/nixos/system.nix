@@ -24,6 +24,9 @@
     wget
     git
     zsh
+
+    pciutils
+    usbutils
   ];
 
   programs.zsh.enable = true;
