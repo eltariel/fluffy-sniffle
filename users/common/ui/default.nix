@@ -29,6 +29,16 @@
       #      };
     };
 
+    kitty = {
+      enable = true;
+      enableGitIntegration = true;
+      font = {
+        name = "VictorMono Nerd Font";
+        size = 14;
+      };
+      themeFile = "Nord";
+    };
+
     nix-index = {
       enable = true;
     };
