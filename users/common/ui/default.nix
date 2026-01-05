@@ -12,6 +12,9 @@
 
       inkscape
       #      gimp
+      reaper
+      reaper-sws-extension
+      reaper-reapack-extension
     ];
   };
 
