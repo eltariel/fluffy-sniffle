@@ -12,9 +12,29 @@
 
       inkscape
       #      gimp
+
+      # DAWs etc
       reaper
       reaper-sws-extension
       reaper-reapack-extension
+      lmms
+      ardour
+      renoise
+
+      # Audio plugins
+      x42-plugins
+      tunefish
+      distrho-ports
+      lsp-plugins
+      sorcer
+
+      yabridge
+
+      # Audio routing
+      helvum
+      qpwgraph
+      coppwr
+      pw-viz
     ];
   };
 
