@@ -12,6 +12,7 @@
 
       inkscape
       #      gimp
+      rpi-imager
 
       # DAWs etc
       reaper
