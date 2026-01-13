@@ -2,7 +2,7 @@
   nixpkgs,
   nixos-hardware,
   home-manager,
-  nixos-06cb-009a-fingerprint-sensor,
+  # nixos-06cb-009a-fingerprint-sensor,
   ...
 } @ inputs: let
   inherit (builtins) listToAttrs map;
@@ -34,7 +34,7 @@ in {
         modules = [
           ../../hosts/nixos/${host}/configuration.nix
 
-          nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
+          # nixos-06cb-009a-fingerprint-sensor.nixosModules."06cb-009a-fingerprint-sensor"
 
           home-manager.nixosModules.home-manager
           {
