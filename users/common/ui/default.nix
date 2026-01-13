@@ -29,7 +29,7 @@
       lsp-plugins
       sorcer
 
-      #yabridge
+      yabridge
 
       # Audio routing
       helvum
