@@ -25,12 +25,12 @@
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
 
-  services."06cb-009a-fingerprint-sensor" = {                                 
-    enable = true;                                                            
-    # backend = "python-validity";                                              
-    backend = "libfprint-tod";
-    calib-data-file = ./calib-data.bin;
-  };
+  # services."06cb-009a-fingerprint-sensor" = {                                 
+  #   enable = true;                                                            
+  #   # backend = "python-validity";                                              
+  #   backend = "libfprint-tod";
+  #   calib-data-file = ./calib-data.bin;
+  # };
 
   # Configure keymap in X11
   services.xserver.xkb = {
