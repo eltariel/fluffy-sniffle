@@ -63,6 +63,14 @@
       themeFile = "Nord";
     };
 
+    vicinae = {
+      enable = true;
+      systemd = {
+        enable = true;
+
+      };
+    };
+
     nix-index = {
       enable = true;
     };
