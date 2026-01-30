@@ -2,6 +2,7 @@
   inputs,
   config,
   pkgs,
+  lib,
   ...
 }: {
   home = {
@@ -46,6 +47,10 @@
         ];
         theme = "agnoster";
       };
+
+      initContent = lib.mkOrder 1500 ''
+        eval "$(pyenv virtualenv-init -)"
+      '';
     };
 
     bat = {

@@ -13,7 +13,7 @@
     python313
     ripgrep
     git-lfs
-    
+
     nodejs
 
     rustup
@@ -25,11 +25,11 @@
 
     (
       with dotnetCorePackages;
-      combinePackages [
-        sdk_8_0
-        sdk_9_0
-        sdk_10_0
-      ]
+        combinePackages [
+          sdk_8_0
+          sdk_9_0
+          sdk_10_0
+        ]
     )
 
     tio
