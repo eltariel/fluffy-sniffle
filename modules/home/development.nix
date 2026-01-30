@@ -8,17 +8,27 @@
     gh
     cmake
     gnumake
-    #    gcc-arm-embedded # doesn't work on x86_64-darwin
+    gcc-arm-embedded # doesn't work on x86_64-darwin
     clang
     python313
     ripgrep
     git-lfs
+    
+    nodejs
+    corepack
 
     rustup
 
-    nodejs
+    nixd
+    alejandra
 
-    dotnet-sdk
+    with dotnetCorePackages;
+    combinePackages [
+      sdk_8_0
+      sdk_9_0
+      sdk_10_0
+    ]
+
     tio
   ];
 

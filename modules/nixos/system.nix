@@ -27,6 +27,9 @@
 
     pciutils
     usbutils
+
+    zip
+    unzip
   ];
 
   programs.zsh.enable = true;
