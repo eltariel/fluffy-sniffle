@@ -8,8 +8,8 @@
     gh
     cmake
     gnumake
-    gcc-arm-embedded # doesn't work on x86_64-darwin
     clang
+    gcc-arm-embedded # doesn't work on x86_64-darwin
     python313
     ripgrep
     git-lfs
@@ -37,13 +37,13 @@
 
   programs = {
     jq.enable = true;
-    pyenv.enable = true;
 
     vscode = {
       enable = lib.mkDefault true; # services.xserver.enable;
     };
 
     pyenv = {
+      enable = true;
       rootDirectory = "${config.home.homeDirectory}/.pyenv";
     };
   };
