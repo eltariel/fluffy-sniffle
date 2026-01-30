@@ -10,7 +10,12 @@
     gnumake
     clang
     gcc-arm-embedded # doesn't work on x86_64-darwin
-    python313
+    (python313.withPackages (p: [
+      p.pip
+      p.wheel
+      p.virtualenv
+      p.setuptools
+    ]))
     ripgrep
     git-lfs
 
