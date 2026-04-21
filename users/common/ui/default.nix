@@ -32,7 +32,8 @@
       yabridge
 
       # Audio routing
-      helvum
+      # helvum
+      crosspipe
       qpwgraph
       coppwr
       pw-viz
