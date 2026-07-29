@@ -21,6 +21,10 @@
   ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "iommu=pt"
+  ];
 
   networking.hostName = "flattery"; # Define your hostname.
   networking.networkmanager.enable = true;
@@ -54,6 +58,8 @@
   };
 
   hardware.bluetooth.enable = true;
+
+  services.hardware.bolt.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
