@@ -61,7 +61,7 @@
         name = "VictorMono Nerd Font";
         size = 14;
       };
-      themeFile = "Nord";
+      themeFile = "Catppuccin-Macchiato";
     };
 
     vicinae = {
