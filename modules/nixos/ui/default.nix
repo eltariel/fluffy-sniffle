@@ -5,6 +5,10 @@
     flatpak = {
       enable = true;
     };
+
+    protonmail-bridge = {
+      enable = true;
+    };
   };
 
   xdg.portal = {
@@ -12,24 +16,20 @@
     # config = { ... };
   };
 
-  programs.appimage = {
-    enable = true;
-    binfmt = true;
-  };
-
   programs = {
-    thunderbird = {
+    appimage = {
       enable = true;
+      binfmt = true;
     };
-  };
 
-  services = {
-    protonmail-bridge = {
+    thunderbird = {
       enable = true;
     };
   };
 
   environment.systemPackages = with pkgs; [
     firefox
+    librewolf
+    ungoogled-chromium
   ];
 }

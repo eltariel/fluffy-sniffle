@@ -5,10 +5,10 @@
     isNormalUser = true;
     group = "ellie";
     extraGroups = ["wheel" "networkmanager" "docker" "libvirtd"];
-    packages = with pkgs; [
-      firefox
-      # tree
-    ];
+    # packages = with pkgs; [
+    # firefox
+    # tree
+    # ];
   };
 
   services.udev.packages = [
