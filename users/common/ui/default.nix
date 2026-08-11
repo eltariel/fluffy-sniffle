@@ -23,13 +23,22 @@
       renoise
 
       # Audio plugins
-      x42-plugins
       tunefish
       distrho-ports
       lsp-plugins
       sorcer
 
       yabridge
+
+      x42-plugins # VU Meter,etc
+      lsp-plugins # IR Impulse,etc
+      eq10q # Equalizer
+      dragonfly-reverb # Reverb
+      surge-XT # Synth
+      yoshimi # Synth
+      calf # Saturation,etc
+      guitarix # Guitar Effect
+      gxplugins-lv2 # Guitarix extra
 
       # Audio routing
       # helvum
