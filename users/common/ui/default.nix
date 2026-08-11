@@ -34,7 +34,7 @@
       lsp-plugins # IR Impulse,etc
       eq10q # Equalizer
       dragonfly-reverb # Reverb
-      surge-XT # Synth
+      surge-xt # Synth
       yoshimi # Synth
       calf # Saturation,etc
       guitarix # Guitar Effect
